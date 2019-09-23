@@ -1,5 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom" // 虚拟Dom
+<<<<<<< HEAD
 
 import { createStore } from "redux"
 
@@ -60,3 +61,15 @@ const render = () => {
 render()
 
 store.subscribe(render)
+=======
+import Containment from "./Containment.js"
+
+ReactDOM.render(
+    <Containment left={<p>left</p>} right={<p>right</p>}></Containment>
+    , document.getElementById("root"))
+
+
+
+
+
+>>>>>>> 1d839726345f8b05aa6580b440538f39bb18cc21
