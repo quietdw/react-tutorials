@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom" // 虚拟Dom
-<<<<<<< HEAD
 
 import { createStore } from "redux"
 
@@ -9,7 +8,7 @@ function counter(state, action) {
 
   switch (action.type) {
     case "INCREMENT":
-      return { number: state.number + 1 }
+      return { number: state.number + 1 } // 2. 根据操作生成新的state
     case "DECREMENT":
       return { number: state.number - 1 }
     default:
@@ -21,7 +20,7 @@ let store = createStore(counter)
 
 class TestStore extends React.Component {
   add() {
-    store.dispatch({ type: "INCREMENT" })
+    store.dispatch({ type: "INCREMENT" }) // 1. dispatch 一个操作
   }
 
   minus() {
@@ -51,25 +50,15 @@ class TestStore extends React.Component {
   }
 }
 
-const render = () => {
+const render = store => {
   ReactDOM.render(
     <TestStore store={store.getState()} />,
     document.getElementById("root")
   )
 }
 
-render()
+render(store)
 
-store.subscribe(render)
-=======
-import Containment from "./Containment.js"
-
-ReactDOM.render(
-    <Containment left={<p>left</p>} right={<p>right</p>}></Containment>
-    , document.getElementById("root"))
-
-
-
-
-
->>>>>>> 1d839726345f8b05aa6580b440538f39bb18cc21
+store.subscribe(() => {
+  render(store)
+}) // 接收到事件重新render
