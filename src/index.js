@@ -8,9 +8,9 @@ function counter(state, action) {
 
   switch (action.type) {
     case "INCREMENT":
-      return { number: state.number + 1 } // 2. 根据操作生成新的state
+      return { number: state.number + action.payload } // 2. 根据操作生成新的state
     case "DECREMENT":
-      return { number: state.number - 1 }
+      return { number: state.number - action.payload }
     default:
       return { number: state.number }
   }
@@ -20,11 +20,11 @@ let store = createStore(counter)
 
 class TestStore extends React.Component {
   add() {
-    store.dispatch({ type: "INCREMENT" }) // 1. dispatch 一个操作
+    store.dispatch({ type: "INCREMENT", payload: 2 }) // 1. dispatch 一个操作
   }
 
   minus() {
-    store.dispatch({ type: "DECREMENT" })
+    store.dispatch({ type: "DECREMENT", payload: 2 })
   }
 
   render() {
@@ -36,14 +36,14 @@ class TestStore extends React.Component {
             this.add()
           }}
         >
-          +
+          +2
         </button>
         <button
           onClick={() => {
             this.minus()
           }}
         >
-          -
+          -2
         </button>
       </div>
     )
