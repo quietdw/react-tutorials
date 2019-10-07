@@ -1,5 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom" // 虚拟Dom
-import ContextTest from "./ContextTest.js"
+import HooksTest from "./HooksTest.js"
 
-ReactDOM.render(<ContextTest />, document.getElementById("root"))
+ReactDOM.render(<HooksTest />, document.getElementById("root"))
